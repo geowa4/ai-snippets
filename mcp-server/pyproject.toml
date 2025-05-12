@@ -1,0 +1,22 @@
+[project]
+name = "mcp-server"
+version = "0.1.0"
+description = "MCP server to discover and load my commonly used snippets"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "chromadb>=1.0.8",
+    "mcp[cli]>=1.8.1",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.15.0",
+    "python-lsp-server>=1.12.2",
+    "ruff>=0.11.9",
+    "watchdog>=6.0.0",
+]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["D203", "D211", "D213", "T201"]
