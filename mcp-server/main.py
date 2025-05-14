@@ -2,6 +2,7 @@
 
 """Run an MCP server to discover and load snippets."""
 
+import logging
 import os
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
@@ -10,6 +11,15 @@ from pathlib import Path
 
 from mcp.server.fastmcp import Context, FastMCP
 
+# Configure logging
+LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
+logging.basicConfig(
+    level=getattr(logging, LOG_LEVEL, logging.INFO),
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+)
+logger = logging.getLogger(__name__)
+
+# Common response when no snippet is found
 NO_MATCHING_SNIPPET_TEMPLATE = (
     "No snippet matched '{name}'. "
     "Call `get_snippet_summaries` to get a list of snippets matching your query."
@@ -30,7 +40,9 @@ async def app_lifespan(_server: FastMCP) -> AsyncIterator[AppContext]:
     snippets_path = Path(
         os.getenv("SNIPPET_DIRECTORY", Path(__file__).parent.parent / "snippets"),
     )
+    logger.info("Initializing application lifespan: snippets_path=%s", snippets_path)
     summaries = {s.parent.name: s.read_text() for s in snippets_path.glob("**/SUMMARY.md")}
+    logger.info("Loaded %d snippet summaries", len(summaries))
     yield AppContext(snippets_path=snippets_path, summaries=summaries)
 
 
@@ -50,7 +62,8 @@ def get_snippet_summaries(query: str, ctx: Context) -> str:  # noqa: D417
       Snippet names and their summaries including language, tools, and other technologies.
 
     """
-    print(f"TODO: use query '{query}'")
+    logger.info("get_snippet_summaries called with query=%s", query)
+    logger.debug("Query terms: %s", query)
     return "\n\n".join(
         [
             f"<snippet>\nSnippet Name: {name}\n\n---\n\n{summary}\n</snippet>"
@@ -72,9 +85,11 @@ def get_python_code_snippet(name: str, ctx: Context) -> str:  # noqa: D417
       The Python code snippet.
 
     """
+    logger.info("get_python_code_snippet called with name=%s", name)
     app_ctx: AppContext = ctx.request_context.lifespan_context
     code = app_ctx.snippets_path / name / "main.py"
     if not code.exists():
+        logger.warning("Snippet %s not found at path: %s", name, code)
         return NO_MATCHING_SNIPPET_TEMPLATE.format(name=name)
     return code.read_text()
 
@@ -92,7 +107,11 @@ def tell_me_more(name: str, ctx: Context) -> str:  # noqa: D417
       The summary and README of the snippet.
 
     """
-    return ctx.request_context.lifespan_context.summaries.get(
-        name,
-        NO_MATCHING_SNIPPET_TEMPLATE.format(name=name),
-    )
+    logger.info("tell_me_more called with name=%s", name)
+    app_ctx: AppContext = ctx.request_context.lifespan_context
+    summary = app_ctx.summaries.get(name)
+    readme = app_ctx.snippets_path / name / "README.md"
+    if summary is None or not readme.exists:
+        logger.warning("Summary and README for snippet %s not found", name)
+        return NO_MATCHING_SNIPPET_TEMPLATE.format(name=name)
+    return f"{summary}\n\n---\n\n{readme.read_text()}"
