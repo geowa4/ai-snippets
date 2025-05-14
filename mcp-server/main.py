@@ -79,7 +79,6 @@ def get_python_code_snippet(name: str, ctx: Context) -> str:  # noqa: D417
     return code.read_text()
 
 
-# Add a dynamic greeting resource
 @mcp.tool()
 def tell_me_more(name: str, ctx: Context) -> str:  # noqa: D417
     """Tell more about the named snippet by returning its summary and README.
