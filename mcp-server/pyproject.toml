@@ -17,6 +17,9 @@ dev = [
     "watchdog>=6.0.0",
 ]
 
+[tool.ruff]
+line-length = 100
+
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = ["D203", "D211", "D213", "T201"]
