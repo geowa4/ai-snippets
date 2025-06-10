@@ -38,7 +38,16 @@ uv sync
 Make sure you have [Ollama](https://ollama.com/) installed and running locally. Pull the required model:
 
 ```bash
+ollama serve
+```
+
+```bash
 ollama pull bge-m3
+```
+
+Check the model installed
+```bash
+ollama list
 ```
 
 ### 3. Use Sample Document
