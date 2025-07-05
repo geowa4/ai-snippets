@@ -1,0 +1,21 @@
+[project]
+name = "qwen3-embed"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "sentence-transformers>=5.0.0",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.16.1",
+    "python-lsp-server>=1.12.2",
+    "ruff>=0.12.2",
+]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["D203", "D211", "D213", "T201", "COM812"]
+
