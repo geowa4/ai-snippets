@@ -1,0 +1,18 @@
+[project]
+name = "pydantic-graph-basics"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pydantic-graph>=0.6.2",
+    "httpx>=0.27.0",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.17.1",
+    "python-lsp-server>=1.13.0",
+    "ruff>=0.12.8",
+    "watchdog>=6.0.0",
+]
