@@ -21,5 +21,5 @@ podman run --rm -it -p 8000:8000 ai-snippet-mcp:latest
 Once running, you can use the MCP server with the configuration in `mcp-http.json`.
 
 ```bash
-claude --mcp-config /Users/geowa4/Dev/geowa4/ai-snippets/mcp-http.json
+claude --mcp-config /path/to/ai-snippets/mcp-http.json
 ```
