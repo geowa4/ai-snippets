@@ -5,8 +5,8 @@ description = "MCP server to discover and load my commonly used snippets"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "chromadb>=1.0.8",
-    "mcp[cli]>=1.8.1",
+    "chromadb>=1.0.20",
+    "fastmcp>=2.11.0",
 ]
 
 [dependency-groups]

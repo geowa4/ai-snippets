@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "ai-snippets": {
+      "type": "http", 
+      "url": "http://localhost:8000/mcp",
+      "auth": {}
+    }
+  }
+}

@@ -9,12 +9,12 @@ from contextlib import asynccontextmanager
 from dataclasses import dataclass
 from pathlib import Path
 
-from mcp.server.fastmcp import Context, FastMCP
+from fastmcp import FastMCP
+from fastmcp.server.context import Context
 
-# Configure logging
-LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
+LOG_LEVEL = os.getenv("LOG_LEVEL", "WARNING").upper()
 logging.basicConfig(
-    level=getattr(logging, LOG_LEVEL, logging.INFO),
+    level=getattr(logging, LOG_LEVEL, logging.WARNING),
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
 logger = logging.getLogger(__name__)
@@ -46,7 +46,7 @@ async def app_lifespan(_server: FastMCP) -> AsyncIterator[AppContext]:
     yield AppContext(snippets_path=snippets_path, summaries=summaries)
 
 
-mcp = FastMCP("AI Snippet Server", lifespan=app_lifespan)
+mcp = FastMCP("AI Snippet Server", lifespan=app_lifespan, auth=None)
 
 
 @mcp.tool()
@@ -114,4 +114,16 @@ def tell_me_more(name: str, ctx: Context) -> str:  # noqa: D417
     if summary is None or not readme.exists:
         logger.warning("Summary and README for snippet %s not found", name)
         return NO_MATCHING_SNIPPET_TEMPLATE.format(name=name)
-    return f"{summary}\n\n---\n\n{readme.read_text()}"
+    try:
+        readme_content = readme.read_text(encoding="utf-8")
+    except UnicodeDecodeError as e:
+        logger.warning("Encoding error reading README for %s: %s", name, e)
+        readme_content = readme.read_text(encoding="utf-8", errors="replace")
+    return f"{summary}\n\n---\n\n{readme_content}"
+
+
+if __name__ == "__main__":
+    host = os.getenv("HOST", "127.0.0.1")
+    port = os.getenv("PORT", "8000")
+    # streamable-http transport serves MCP endpoint at /mcp/ by default
+    mcp.run(transport="streamable-http", host=host, port=int(port))

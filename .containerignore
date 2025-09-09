@@ -1,0 +1,35 @@
+# Python cache and virtual environments
+**/.venv/
+**/__pycache__/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.pytest_cache/
+
+# Development tools
+**/.claude/
+**/.vscode/
+**/.idea/
+
+# Python files
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/.python-version
+
+# Git
+**/.git/
+**/.gitignore
+
+# OS files
+**/.DS_Store
+**/Thumbs.db
+
+# Log files
+**/*.log
+
+# Temporary files
+**/tmp/
+**/temp/
+
+# Only include essential files for the MCP server
+# Keep: *.py, *.md, *.toml (for dependencies), sample files for examples
