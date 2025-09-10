@@ -15,9 +15,9 @@ This is a collection of AI code snippets, where each snippet is a self-contained
 ### Creating a New Snippet
 ```bash
 cd snippets
-uv init <name-of-snippet>                                           # Create new snippet directory
+uv init <name-of-snippet>                           # Create new snippet directory
 cd <name-of-snippet>
-uv add --dev mypy python-lsp-server ruff watchdog                  # Add standard dev dependencies
+uv add --dev mypy python-lsp-server ruff watchdog   # Add standard dev dependencies
 ```
 
 ### Individual Snippet Development
@@ -43,7 +43,7 @@ uv run ruff format      # Format code with ruff
 
 ### Container Development
 ```bash
-podman build -t ai-snippet-mcp .                    # Build container
+podman build -t ai-snippet-mcp .                   # Build container using Containerfile
 podman run --rm -it -p 8000:8000 ai-snippet-mcp    # Run container
 ```
 
