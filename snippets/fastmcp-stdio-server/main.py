@@ -64,6 +64,17 @@ def get_server_info(ctx: Context) -> str:
     )
 
 
+def main():
+    """Entry point for the MCP server."""
+    try:
+        # Use stdio transport for MCP client communication
+        mcp.run(transport="stdio")
+    except KeyboardInterrupt:
+        print("\nShutting down MCP server...")
+    except Exception as e:
+        print(f"Server error: {e}")
+        raise
+
+
 if __name__ == "__main__":
-    # Use stdio transport for MCP client communication
-    mcp.run(transport="stdio")
+    main()

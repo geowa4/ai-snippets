@@ -122,8 +122,20 @@ def tell_me_more(name: str, ctx: Context) -> str:  # noqa: D417
     return f"{summary}\n\n---\n\n{readme_content}"
 
 
-if __name__ == "__main__":
+def main():
+    """Entry point for the MCP server."""
     host = os.getenv("HOST", "127.0.0.1")
     port = os.getenv("PORT", "8000")
-    # streamable-http transport serves MCP endpoint at /mcp/ by default
-    mcp.run(transport="streamable-http", host=host, port=int(port))
+
+    try:
+        # streamable-http transport serves MCP endpoint at /mcp/ by default
+        mcp.run(transport="streamable-http", host=host, port=int(port))
+    except KeyboardInterrupt:
+        print("\nShutting down MCP server...")
+    except Exception as e:
+        print(f"Server error: {e}")
+        raise
+
+
+if __name__ == "__main__":
+    main()
