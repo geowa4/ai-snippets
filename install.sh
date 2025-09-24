@@ -98,7 +98,7 @@ cd "$PROJECT_ROOT"
 # Check for local changes
 if [ -n "$(git status --porcelain)" ]; then
     echo "Warning: Local changes detected, skipping git pull" >&2
-    CHANGES_DETECTED=false
+    CHANGES_DETECTED=true
 else
     # Get current commit hash
     OLD_COMMIT=$(git rev-parse HEAD)
