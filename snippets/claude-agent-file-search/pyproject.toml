@@ -1,0 +1,25 @@
+[project]
+name = "claude-agent-file-search"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "claude-agent-sdk>=0.1.0",
+    "click>=8.3.0",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.18.2",
+    "python-lsp-server>=1.13.1",
+    "ruff>=0.13.2",
+    "watchdog>=6.0.0",
+]
+
+[tool.ruff]
+exclude = ["test-files"]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["D211", "D213", "T201"]
