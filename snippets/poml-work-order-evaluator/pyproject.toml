@@ -1,0 +1,21 @@
+[project]
+name = "poml-work-order-evaluator"
+version = "0.1.0"
+description = "Demonstrate POML components for evaluating work order thoroughness and categorization"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "poml>=0.0.8",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.15.0",
+    "python-lsp-server>=1.12.2",
+    "ruff>=0.11.8",
+    "watchdog>=6.0.0",
+]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["D211", "D213", "T201"]
