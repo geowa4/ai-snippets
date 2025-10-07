@@ -44,6 +44,16 @@ get_container_port() {
     podman port "$CONTAINER_NAME" 8000 2>/dev/null | cut -d: -f2 || echo ""
 }
 
+# Function to get image git commit
+get_image_commit() {
+    podman image inspect "$CONTAINER_NAME" --format '{{.Labels.git_commit}}' 2>/dev/null || echo ""
+}
+
+# Function to get current repo git commit
+get_repo_commit() {
+    git rev-parse HEAD
+}
+
 # Function to stop container if running
 stop_container() {
     if is_container_running; then
@@ -98,22 +108,30 @@ cd "$PROJECT_ROOT"
 # Check for local changes
 if [ -n "$(git status --porcelain)" ]; then
     echo "Warning: Local changes detected, skipping git pull" >&2
-    CHANGES_DETECTED=true
 else
     # Get current commit hash
     OLD_COMMIT=$(git rev-parse HEAD)
-    
+
     # Pull latest changes
     echo "Pulling latest changes..." >&2
     git pull >/dev/null 2>&1
-    
-    # Check if there were changes
+
+    # Get new commit hash after pull
     NEW_COMMIT=$(git rev-parse HEAD)
     if [ "$OLD_COMMIT" != "$NEW_COMMIT" ]; then
-        CHANGES_DETECTED=true
-    else
-        CHANGES_DETECTED=false
+        echo "Repository updated from $OLD_COMMIT to $NEW_COMMIT" >&2
     fi
+fi
+
+# Check if image needs to be rebuilt by comparing repo commit with image label
+REPO_COMMIT=$(get_repo_commit)
+IMAGE_COMMIT=$(get_image_commit)
+
+if [ -z "$IMAGE_COMMIT" ] || [ "$REPO_COMMIT" != "$IMAGE_COMMIT" ]; then
+    CHANGES_DETECTED=true
+    echo "Git commit mismatch - repo: $REPO_COMMIT, image: ${IMAGE_COMMIT:-none}" >&2
+else
+    CHANGES_DETECTED=false
 fi
 
 # Check if container is already running
@@ -122,7 +140,7 @@ if is_container_running; then
         echo "Changes detected, rebuilding and restarting container..." >&2
         stop_container
         echo "Building image..." >&2
-        podman build -t "$CONTAINER_NAME" . >/dev/null
+        podman build --label "git_commit=$REPO_COMMIT" -t "$CONTAINER_NAME" . >/dev/null
         PORT=$(start_container)
     else
         echo "Container already running, using existing instance..." >&2
@@ -141,7 +159,7 @@ else
     # Check if image exists or if we need to build
     if ! podman image exists "$CONTAINER_NAME" || [ "$CHANGES_DETECTED" = "true" ]; then
         echo "Building image..." >&2
-        podman build -t "$CONTAINER_NAME" . >/dev/null
+        podman build --label "git_commit=$REPO_COMMIT" -t "$CONTAINER_NAME" . >/dev/null
     fi
     PORT=$(start_container)
 fi
