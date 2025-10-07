@@ -1,6 +1,7 @@
 """Demonstrate POML components for evaluating work order thoroughness."""
 
 from poml import poml  # type: ignore[import-untyped]
+from poml.prompt import Prompt  # type: ignore[import-untyped]
 
 
 def create_work_order_evaluation_template() -> str:
@@ -99,6 +100,126 @@ def create_work_order_evaluation_template() -> str:
 """
 
 
+def create_work_order_evaluation_with_prompt_class(
+    work_order: str,
+) -> Prompt:
+    """Create a POML template using the Prompt class API.
+
+    This demonstrates programmatic prompt construction using Python
+    code instead of XML string templates.
+
+    Args:
+        work_order: The work order content to evaluate
+
+    Returns:
+        Configured Prompt object ready for rendering
+
+    """
+    prompt = Prompt()
+
+    with prompt:
+        # Define the role
+        with prompt.tag("role"):
+            prompt.text(
+                "You are an experienced IT service desk manager "
+                "responsible for evaluating work order quality. "
+                "Your task is to assess work orders for completeness, "
+                "clarity, and proper categorization.",
+            )
+
+        # Add first example - Low thoroughness
+        with prompt.tag("example"):
+            with prompt.tag("input"):
+                prompt.text(
+                    "Work Order #1234\nUser reported login issue. Fixed password.",
+                )
+            with prompt.tag("output"):
+                prompt.text(
+                    "Thoroughness: Low - Missing details about "
+                    "troubleshooting steps, root cause, and user notification\n"
+                    "Steps Taken: Minimal - Only password reset mentioned, "
+                    "no diagnostic steps documented\n"
+                    "Transactional: Yes - Simple password reset is a "
+                    "standard transactional operation",
+                )
+
+        # Add second example - High thoroughness
+        with prompt.tag("example"):
+            with prompt.tag("input"):
+                prompt.text(
+                    "Work Order #2456\n"
+                    "Database performance degradation. Investigated slow queries, "
+                    "identified missing indexes on customer_orders table. "
+                    "Added composite index on (order_date, status, customer_id). "
+                    "Monitored query performance for 4 hours post-deployment. "
+                    "Average query time reduced from 3.2s to 0.4s.",
+                )
+            with prompt.tag("output"):
+                prompt.text(
+                    "Thoroughness: High - Includes problem identification, "
+                    "root cause analysis, specific solution, and validation\n"
+                    "Steps Taken: Detailed - Clear investigation path and "
+                    "performance metrics documented\n"
+                    "Transactional: No - Required analysis and custom solution "
+                    "for performance optimization",
+                )
+
+        # Add third example - Medium thoroughness
+        with prompt.tag("example"):
+            with prompt.tag("input"):
+                prompt.text(
+                    "Work Order #3789\n"
+                    "Printer offline in Building C. Checked network cable, "
+                    "restarted printer. Working now.",
+                )
+            with prompt.tag("output"):
+                prompt.text(
+                    "Thoroughness: Medium - Basic troubleshooting documented "
+                    "but lacks detail on specific diagnostics\n"
+                    "Steps Taken: Adequate - Key actions listed but missing "
+                    "verification steps and timeline\n"
+                    "Transactional: Yes - Standard printer troubleshooting "
+                    "with common resolution steps",
+                )
+
+        # Add stepwise instructions
+        with prompt.tag("stepwise-instructions"), prompt.list(listStyle="decimal"):
+            with prompt.list_item():
+                prompt.text("Read the work order description carefully")
+            with prompt.list_item():
+                prompt.text(
+                    "Evaluate thoroughness based on detail level and completeness",
+                )
+            with prompt.list_item():
+                prompt.text("Assess documented steps taken during resolution")
+            with prompt.list_item():
+                prompt.text("Determine if request is transactional or complex")
+            with prompt.list_item():
+                prompt.text("Provide specific recommendations for improvement")
+
+        # Add the task with work order content
+        with prompt.tag("task"):
+            prompt.text("Evaluate the following work order:\n\n")
+            prompt.text(work_order)
+            prompt.text("\n\nProvide your evaluation using these criteria:\n\n")
+
+            with prompt.list(listStyle="star"):
+                with prompt.list_item():
+                    prompt.text("Thoroughness: Rate as High/Medium/Low and explain why")
+                with prompt.list_item():
+                    prompt.text(
+                        "Steps Taken: Describe quality and completeness of "
+                        "documented actions",
+                    )
+                with prompt.list_item():
+                    prompt.text(
+                        "Transactional: Is this a simple transactional "
+                        "request or complex issue",
+                    )
+
+    return prompt
+
+
 def main() -> None:
     """Demonstrate POML work order evaluation with sample data."""
     # Sample work order data
@@ -134,32 +255,43 @@ Scheduled follow-up check in 48 hours to ensure stability.
 Updated network equipment maintenance log.
 """
 
-    # Create the POML template
-    template = create_work_order_evaluation_template()
+    print("POML Work Order Evaluator - Two Approaches")
+    print("=" * 70)
 
-    # Compile the template with context
+    # Approach 1: String-based XML template
+    print("\n" + "=" * 70)
+    print("APPROACH 1: String-Based XML Template")
+    print("=" * 70)
+
+    template = create_work_order_evaluation_template()
     result = poml(
         markup=template,
         context={"work_order": sample_work_order},
         format="pydantic",
     )
 
-    # Display the results
-    print("POML Work Order Evaluation Template")
-    print("=" * 60)
-    print("\nPydantic Format Output:")
-    print("-" * 60)
-    print(f"Type: {type(result)}")
-    print(f"Number of messages: {len(result.messages)}")
-    print(f"Output schema: {result.output_schema}")
-    print(f"Tools: {result.tools}")
-    print(f"Runtime: {result.runtime}")
-    print("\nMessages:")
-    print("-" * 60)
-    text_output = [
-        f"Speaker: {message.speaker}\n{message.content}" for message in result.messages
-    ]
-    print("\n\n".join(text_output))
+    print(f"\nGenerated {len(result.messages)} messages")
+    print("\nFirst message (System Role):")
+    print("-" * 70)
+    msg_content = [f"Speaker: {msg.speaker}\n{msg.content}" for msg in result.messages]
+    print("\n\n".join(msg_content))
+
+    # Approach 2: Programmatic Prompt class
+    print("\n" + "=" * 70)
+    print("APPROACH 2: Programmatic Prompt Class")
+    print("=" * 70)
+
+    prompt = create_work_order_evaluation_with_prompt_class(sample_work_order)
+
+    # Render as XML to show the structure
+    print("\nGenerated XML Structure:")
+    print("-" * 70)
+    xml_output = prompt.dump_xml()
+    # Show first 500 chars of XML
+    print(xml_output)
+
+    print("-" * 70)
+    print(prompt.render(chat=False))
 
 
 if __name__ == "__main__":

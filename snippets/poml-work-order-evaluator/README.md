@@ -49,11 +49,19 @@ Run the demonstration:
 uv run main.py
 ```
 
-The script will:
-1. Create a POML template with role, examples, and structured instructions
-2. Inject a sample work order into the template
-3. Compile the template using `poml()` function
-4. Display the formatted prompt ready for LLM consumption
+The script demonstrates **two approaches** to creating POML prompts:
+
+### Approach 1: String-Based XML Template
+- Uses POML markup as a string
+- Compiles with `poml()` function
+- Returns Pydantic format with structured messages
+
+### Approach 2: Programmatic Prompt Class
+- Uses Python `Prompt` class API
+- Builds prompts with context managers
+- Outputs XML via `dump_xml()`
+
+Both approaches produce equivalent results, showcasing POML's flexibility.
 
 ---
 
@@ -98,6 +106,61 @@ Structures evaluation criteria with customizable list styles:
   <item>Transactional: Determine complexity</item>
 </list>
 ```
+
+---
+
+## 🐍 Programmatic Prompt Construction
+
+The snippet also demonstrates the `Prompt` class API for building prompts programmatically:
+
+```python
+from poml.prompt import Prompt
+
+prompt = Prompt()
+
+with prompt:
+    # Define role
+    with prompt.tag("role"):
+        prompt.text("You are an IT service desk manager...")
+
+    # Add examples
+    with prompt.tag("example"):
+        with prompt.tag("input"):
+            prompt.text("Work Order #1234...")
+        with prompt.tag("output"):
+            prompt.text("Thoroughness: Low...")
+
+    # Add lists
+    with prompt.list(listStyle="decimal"):
+        with prompt.list_item():
+            prompt.text("First step")
+        with prompt.list_item():
+            prompt.text("Second step")
+
+# Get XML output
+xml_output = prompt.dump_xml()
+
+# Or render to messages
+result = prompt.render()
+```
+
+### When to Use Each Approach
+
+**String-Based Template (`poml()` function):**
+- ✅ Familiar XML syntax
+- ✅ Easy to read and maintain
+- ✅ Good for static templates
+- ✅ Simple context variable injection
+- ❌ Less type safety
+- ❌ Harder to compose dynamically
+
+**Programmatic Prompt Class:**
+- ✅ Type-safe with IDE autocomplete
+- ✅ Easy to compose and reuse
+- ✅ Direct XML output via `dump_xml()`
+- ✅ Programmatic control flow
+- ❌ More verbose Python code
+- ❌ Steeper learning curve
 
 ---
 
