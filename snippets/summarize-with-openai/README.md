@@ -32,12 +32,15 @@ uv pip install -e .
 
 1. Add your incident report markdown files to the `incident-reports` directory
 2. Set the OpenAI API key as an environment variable:
+
    ```bash
    export OPENAI_API_KEY="your_api_key_here"
    export OPENAI_BASE_URL="http://localhost:1234/v1"
    export MODEL_NAME="gemma-3-27b-it"
    ```
+
 3. Run the main script:
+
    ```bash
    uv run main.py
    ```
@@ -47,11 +50,13 @@ Summaries will be generated in the `incident-summaries` directory with the same 
 ## Development
 
 - Run code formatting and linting:
+
   ```bash
   uv run ruff check
   ```
 
 - Run type checking:
+
   ```bash
   uv run mypy
   ```

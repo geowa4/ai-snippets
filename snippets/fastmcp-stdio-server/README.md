@@ -89,16 +89,19 @@ The server can be integrated with any MCP-compatible client that supports stdio 
 The server provides three example tools:
 
 ### 1. `echo`
+
 - **Purpose**: Echo back any message
 - **Parameters**: `message` (string)
 - **Returns**: The same message with "Echo: " prefix
 
 ### 2. `add_numbers`
+
 - **Purpose**: Add two numbers together
 - **Parameters**: `a` (float), `b` (float)
 - **Returns**: Sum of the two numbers
 
 ### 3. `get_server_info`
+
 - **Purpose**: Get information about the server
 - **Parameters**: None
 - **Returns**: Server status and configuration details
@@ -116,6 +119,7 @@ The server provides three example tools:
 The server follows these key patterns:
 
 ### Lifecycle Management
+
 ```python
 @asynccontextmanager
 async def app_lifespan(_server: FastMCP) -> AsyncIterator[dict]:
@@ -125,6 +129,7 @@ async def app_lifespan(_server: FastMCP) -> AsyncIterator[dict]:
 ```
 
 ### Tool Definition
+
 ```python
 @mcp.tool()
 def tool_name(param: type) -> return_type:
@@ -133,6 +138,7 @@ def tool_name(param: type) -> return_type:
 ```
 
 ### Context Access
+
 ```python
 @mcp.tool()
 def tool_with_context(ctx: Context) -> str:

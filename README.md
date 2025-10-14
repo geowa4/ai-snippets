@@ -28,6 +28,7 @@ claude --mcp-config "$(ai-snippet-mcp)"
 ```
 
 The script will:
+
 - Pull the latest changes from git (if no local modifications)
 - Rebuild the container only when necessary
 - Start the container on a random available port (or fixed port if specified)

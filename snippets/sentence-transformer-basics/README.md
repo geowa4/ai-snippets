@@ -5,6 +5,7 @@ A demonstration project showcasing the use of the `sentence-transformers` Python
 ## Overview
 
 This project demonstrates how to:
+
 - Load and initialize a sentence transformer model
 - Encode queries and documents into embeddings
 - Calculate semantic similarity between queries and documents
@@ -34,12 +35,14 @@ brew install uv
 ## Installation
 
 1. Clone this repository:
+
 ```bash
 git clone <repository-url>
 cd sentence-transformer-basics
 ```
 
 2. Install dependencies using `uv`:
+
 ```bash
 uv sync
 ```
@@ -65,6 +68,7 @@ EMBEDDING_MODEL_OR_PATH="/path/to/your/local/model" uv run main.py
 ### Example Output
 
 The demo will:
+
 1. Display model details (prompts, embedding dimension, similarity function)
 2. Encode sample queries about China's capital and gravity
 3. Encode related documents
@@ -75,16 +79,19 @@ The demo will:
 For large models or to avoid repeated downloads, you can download models locally first:
 
 1. Install Git LFS:
+
 ```bash
 git lfs install
 ```
 
 2. Clone the model repository:
+
 ```bash
 git clone https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
 ```
 
 3. Use the local path when running:
+
 ```bash
 EMBEDDING_MODEL_OR_PATH="./all-MiniLM-L6-v2" uv run main.py
 ```
@@ -135,6 +142,7 @@ uv run mypy .
 ## How It Works
 
 The demo:
+
 1. Initializes a SentenceTransformer model using the path/name from the environment variable
 2. Encodes sample queries using `model.encode_query()`
 3. Encodes sample documents using `model.encode_document()`

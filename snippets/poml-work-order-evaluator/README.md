@@ -14,6 +14,7 @@ This project demonstrates POML's key components in a practical context:
 4. **`<stepwise-instructions>`** - Guide the evaluation methodology
 
 The snippet evaluates work orders across three dimensions:
+
 - **Thoroughness**: Completeness and detail level
 - **Steps Taken**: Quality of documented actions
 - **Transactional Nature**: Simple vs. complex issue classification
@@ -52,11 +53,13 @@ uv run main.py
 The script demonstrates **two approaches** to creating POML prompts:
 
 ### Approach 1: String-Based XML Template
+
 - Uses POML markup as a string
 - Compiles with `poml()` function
 - Returns Pydantic format with structured messages
 
 ### Approach 2: Programmatic Prompt Class
+
 - Uses Python `Prompt` class API
 - Builds prompts with context managers
 - Outputs XML via `dump_xml()`
@@ -68,7 +71,9 @@ Both approaches produce equivalent results, showcasing POML's flexibility.
 ## 📚 POML Components Demonstrated
 
 ### `<role>`
+
 Establishes the LLM's persona and responsibilities:
+
 ```xml
 <role>
   You are an experienced IT service desk manager responsible for evaluating
@@ -77,7 +82,9 @@ Establishes the LLM's persona and responsibilities:
 ```
 
 ### `<example>`
+
 Provides sample input/output to guide the LLM's response format:
+
 ```xml
 <example>
   <input>Work Order #1234...</input>
@@ -86,7 +93,9 @@ Provides sample input/output to guide the LLM's response format:
 ```
 
 ### `<stepwise-instructions>`
+
 Breaks down the evaluation process into sequential steps:
+
 ```xml
 <stepwise-instructions>
   <list listStyle="decimal">
@@ -98,7 +107,9 @@ Breaks down the evaluation process into sequential steps:
 ```
 
 ### `<list>`
+
 Structures evaluation criteria with customizable list styles:
+
 ```xml
 <list listStyle="star">
   <item>Thoroughness: Rate as High/Medium/Low</item>
@@ -147,6 +158,7 @@ result = prompt.render()
 ### When to Use Each Approach
 
 **String-Based Template (`poml()` function):**
+
 - ✅ Familiar XML syntax
 - ✅ Easy to read and maintain
 - ✅ Good for static templates
@@ -155,6 +167,7 @@ result = prompt.render()
 - ❌ Harder to compose dynamically
 
 **Programmatic Prompt Class:**
+
 - ✅ Type-safe with IDE autocomplete
 - ✅ Easy to compose and reuse
 - ✅ Direct XML output via `dump_xml()`
@@ -169,16 +182,19 @@ result = prompt.render()
 ### Code Quality Checks
 
 Run type checking:
+
 ```bash
 uv run mypy .
 ```
 
 Run linting:
+
 ```bash
 uv run ruff check
 ```
 
 Format code:
+
 ```bash
 uv run ruff format
 ```

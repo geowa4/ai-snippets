@@ -46,16 +46,19 @@ uv run main.py <directory> <query>
 ### Examples
 
 Find authentication-related code:
+
 ```bash
 uv run main.py ./src "authentication logic"
 ```
 
 Find configuration files:
+
 ```bash
 uv run main.py ./config "database connection settings"
 ```
 
 Find documentation about a feature:
+
 ```bash
 uv run main.py ./docs "how to deploy the application"
 ```
@@ -71,12 +74,14 @@ uv run main.py ./docs "how to deploy the application"
 ## Development
 
 Run code formatting and linting:
+
 ```bash
 uv run ruff check
 uv run ruff format
 ```
 
 Run type checking:
+
 ```bash
 uv run mypy main.py
 ```

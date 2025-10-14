@@ -10,4 +10,3 @@ A demonstration of the `pydantic-graph` library that implements a type-safe, con
 - **[Pydantic](https://docs.pydantic.dev/)** - Data validation and serialization for state and dependency models
 - **httpx** - Async HTTP client for external API requests
 - **Python 3.13+** - Modern Python with type hints and async support
-

@@ -44,7 +44,7 @@ by Rick Booth, WA2GCX
 
 Published by The Rochester Amateur Radio Association INCORPORATED Managing Editor . . Harold Smith, WA2KND Art Director . . . . Russ Heuer, K2PLO Chief Photographer  Al Crum, W2BWK GLYPH&lt;9&gt; Staff GLYPH&lt;9&gt; Gable, W2MPM Ed Joe Hood, K2YAH Helen Smith, WA2YRH IBM Computer, 360 Editorial office, 153 Mason Avenue, Rochester,  f meetings, ARRL bulletins, etc. Any am N.Y., 14626. Telephone, 225-5260. Rochester's first two meter FM net was he on Sunday, October 7th. Commonly referred to as the Monroe County FM Net, it is a jo venture between the WA2UWQ/2 and WR2ABF repeater groups. The primary purpose of thi net is to provide a place for information passed which is of common interest to all a teurs. The type of information relayed will clude concerns of the repeater groups, pub service announcements, CD information, notic o teur is invited to check in and pass informa which might be of general interest.
 
-## VOL. 26  	DECEMBER 1973 NO. 4 OFFICERS:
+## VOL. 26   DECEMBER 1973 NO. 4 OFFICERS
 
 President: Robert Lauzon, WB2NSD
 
@@ -238,7 +238,7 @@ WE SELL
 
 MOTOROLA "The - Works- in - a - Drawer"
 
-## ALLIED TV &amp; RADIO, INC.
+## ALLIED TV &amp; RADIO, INC
 
 142-146 Lyell Ave.
 
@@ -252,13 +252,13 @@ Regency HR-2B,
 
 Cash discount price - $189
 
-HR-212  	" Tempo/fmh handi-talki
+HR-212   " Tempo/fmh handi-talki
 
 11
 
 11
 
-"  	$219
+"   $219
 
 11
 
@@ -294,7 +294,7 @@ Recently Appointed
 
 ## YAESU DISTRIBUTOR
 
-## NOW READY WITH YAESU EQUIPMENT TO SERVE THE NORTHEASTERN AREA.
+## NOW READY WITH YAESU EQUIPMENT TO SERVE THE NORTHEASTERN AREA
 
 See all the Great Yaesu Equipment I/7 stock at . . .
 
@@ -326,13 +326,13 @@ Re:. Docket No. 19759
 
 This represents the thinking of the Rochester Amateur Radio Association and its affiliates  tations on the effective radiated p the Rochester VHF Group and the Rochester  should be established including type acc Radio Repeater Association. Membership  ance of antennas. approximately 450. 4.  Limi ed the Amateur Radio Service. We understand  ould be implemented by the required u and are sympathetic with the problem the FCC   tone coded squelch equipment. is confronting in its efforts to strengthen that  er of mouile stations licensed un service, and to improve the Citizens Service  one application should be specific for which there is a definite need. It is with  and justified. these thoughts in mind that we respectfully  pment vendors should be prohibit submit the following. 6.  The numb any stated
 
-- 7.  Equi from issuing equipment unless a valid F license is presented at the time of iss
+- 7. Equi from issuing equipment unless a valid F license is presented at the time of iss
 - We request that the Commission reconsider   First or Second Class radio teleph the frequency allocation proposed as there are  nsee should be required to certi several technical arguments supporting the  ipment is operating properly by co-s reconsideration. 1.  Television interference caused to Channel  is means certification of transmi 13 receivers. This TVI, caused by insuf- equency, deviation and power output. 8.  A lice equ ing the license at the time of acqui Th fr
 - ficient front-end selectivity in the TV re- ment should be recertified in a si ceiver, is already experienced by some  ip amateurs using low power on the 220 MHz band (2 watts ERP, as in the case of repeater  h the advances in micro-electronics control links). Doubt lessly the problem  elt that an automatic station id would be intolerable with the higher power  ould be incorporated in the circuit allowed by the proposed service, and with  ch transmitter, which would be activ operators who have no technical knowledge  ach time it is keyed. This is economi of radio theory. 9.  Equ manner on a yearly basis. 10.  Wit is f sh ea e feasible.
-- 2.  Interference to the proposed Class E service h transmitter should be sealed aga from TV C h an n el 13 transmitters. It is  ring with a device which would rend doubtful that sufficient front-end selectivity  perative if broken. ceivers in a cost effective manner. 11.  Eac tampe it ino
+- 2. Interference to the proposed Class E service h transmitter should be sealed aga from TV C h an n el 13 transmitters. It is  ring with a device which would rend doubtful that sufficient front-end selectivity  perative if broken. ceivers in a cost effective manner. 11.  Eac tampe it ino
 - amateur segment. The second harmonic of  minister and police the service. the proposed 224 MHz operation falls exactly in this rapidly growing amateur segment which is being used for FM and FM Repeater operation in large metropolitan areas.  Rochester VHF Group The harmonic radiation would have to be reduced to as not to access repeaters in the amateur service. It is doubted this could be provided in a cost effective manner. Respectfully submitted, Rochester Amateur Radio Association Rochester Radio Repeater Associatio
 - can be provided for the Class E service re- fee system should be established whi 3.  Harmonic interference to the 448-450 MHz  provide all funds necessary to properl 12.  A will discourage petty use of the servic
-- 4.  There is currently a Class A service available for the Citizens' use at 460-470MHz. Advancements in the state of the art make it a simple matter now to provide excellent radio equipment at these frequencies. We therefore request the Commission consider assigning the Class E service to these higher frequencies.
+- 4. There is currently a Class A service available for the Citizens' use at 460-470MHz. Advancements in the state of the art make it a simple matter now to provide excellent radio equipment at these frequencies. We therefore request the Commission consider assigning the Class E service to these higher frequencies.
 
 II
 
@@ -354,7 +354,7 @@ As already indicated, some of the hams on   K2JD, W2LK, W2MA, W2MF, W2MF, that e
 
 GLYPH&lt;9&gt;
 
-Directory there are 31 two letter calls (hope I  ble at the meeting. didn't miss any--). The percentage is 'way . down from the old days, but that's to be expect- LE - HQ-110 to 6m, D104 w/push to ed. However, it is surprising to see how many  tand, mobile CB (new) antenna, pola hams there are in this area who have been  a, mobile mikes, 6m AM transceive licensed for over thirty years, some having   transmitting station homebrew. La held the much prized "shorties" for that length  WA2ZNC, 381-7328. of time. W2EB was 8PK back in the twenties. W2MG is remembered by many as 8MC. When K2BP signed the old Radio Club constitution in 1925, he put 8WP after his name. W2SA, held by the Society of Rochester Transmitting Amateurs, stems from the old downtown club DRESSES OF PUBLISHE station call, 8AC, K2JD was obtained by RaRa because the old Radio Club of Rochester held 8PZ. W2MA, W2CR, and W2QY are other long term holders still shaking up the ether (I'm dating myself!). I believe my first contact with W2IM was on spark when he was 8ASQ and yours truly was 8BRD. E. Willis (Bill) Stratton, now listed as W2MV, was 8DDL and 8MU when 80 meters opened up. FOR SA talk s camer VHF-UHF Gessin, C Smith  153 Mason Avenue, Roch  t ' ri  . New York  	14626 7.  OWNER (If GLYPH&lt;9&gt; GLYPH&lt;9&gt; also
+Directory there are 31 two letter calls (hope I  ble at the meeting. didn't miss any--). The percentage is 'way . down from the old days, but that's to be expect- LE - HQ-110 to 6m, D104 w/push to ed. However, it is surprising to see how many  tand, mobile CB (new) antenna, pola hams there are in this area who have been  a, mobile mikes, 6m AM transceive licensed for over thirty years, some having   transmitting station homebrew. La held the much prized "shorties" for that length  WA2ZNC, 381-7328. of time. W2EB was 8PK back in the twenties. W2MG is remembered by many as 8MC. When K2BP signed the old Radio Club constitution in 1925, he put 8WP after his name. W2SA, held by the Society of Rochester Transmitting Amateurs, stems from the old downtown club DRESSES OF PUBLISHE station call, 8AC, K2JD was obtained by RaRa because the old Radio Club of Rochester held 8PZ. W2MA, W2CR, and W2QY are other long term holders still shaking up the ether (I'm dating myself!). I believe my first contact with W2IM was on spark when he was 8ASQ and yours truly was 8BRD. E. Willis (Bill) Stratton, now listed as W2MV, was 8DDL and 8MU when 80 meters opened up. FOR SA talk s camer VHF-UHF Gessin, C Smith  153 Mason Avenue, Roch  t ' ri  . New York   14626 7.  OWNER (If GLYPH&lt;9&gt; GLYPH&lt;9&gt; also
 
 Ham calls are uniqu e. They maintain an identity. Most of the time this is good. There is a two letter call once held West of here that hardly anyone would want, but that is an exception. However, many ham s would rather  OM· have their original three letter call then switch to a new two letter ticket. That's their privilege, but it wasn't my choice! I had that tonguetwisting-mouthful, W2VZV, and W2DD was a most welcome relief! I'll bet the dyed-in-thewool CW man Webb Fox was delighted to replace WB2HZH with W2II! And, c all him Horseshoe Haner-- Bob worried about giving up good or W2 FBA, and then came up with W2AB! How lucky can you get? -1. -P,I,PTIONAL conT.TETT.
 
