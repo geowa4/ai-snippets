@@ -64,7 +64,7 @@ def get_server_info(ctx: Context) -> str:
     )
 
 
-def main():
+def main() -> None:
     """Entry point for the MCP server."""
     try:
         # Use stdio transport for MCP client communication
